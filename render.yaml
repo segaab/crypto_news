@@ -1,0 +1,28 @@
+services:
+  - type: web
+    name: rss-poller
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m src.main
+    healthCheckPath: /health
+    envVars:
+      - key: REDIS_HOST
+        value: redis-service
+      - key: REDIS_PORT
+        value: 6379
+      - key: REDIS_DB
+        value: 0
+      - key: LOG_LEVEL
+        value: INFO
+      - key: POLLING_INTERVAL
+        value: 60
+      - key: ARTICLES_BUFFER_SIZE
+        value: 100
+      - key: REDIS_PASSWORD
+        sync: false
+    autoDeploy: true
+
+  - type: redis
+    name: redis-service
+    ipAllowList: []
+    plan: free 

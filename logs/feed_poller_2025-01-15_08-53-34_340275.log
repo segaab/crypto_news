@@ -1,0 +1,12 @@
+2025-01-15 08:53:34.341 | INFO     | feed_poller:__init__:43 - Feed Poller initialized
+2025-01-15 08:53:34.352 | INFO     | redis_client:setup:20 - Successfully connected to Redis at localhost:6379
+2025-01-15 08:53:34.441 | INFO     | feed_poller:setup:58 - Feed Poller setup completed
+2025-01-15 08:53:34.442 | ERROR    | feed_poller:poll_feeds:315 - Error in poll_feeds: 'FeedPoller' object has no attribute 'feed_urls'
+2025-01-15 08:54:34.457 | ERROR    | feed_poller:poll_feeds:315 - Error in poll_feeds: 'FeedPoller' object has no attribute 'feed_urls'
+2025-01-15 08:55:34.474 | ERROR    | feed_poller:poll_feeds:315 - Error in poll_feeds: 'FeedPoller' object has no attribute 'feed_urls'
+2025-01-15 08:56:34.487 | ERROR    | feed_poller:poll_feeds:315 - Error in poll_feeds: 'FeedPoller' object has no attribute 'feed_urls'
+2025-01-15 08:57:34.497 | ERROR    | feed_poller:poll_feeds:315 - Error in poll_feeds: 'FeedPoller' object has no attribute 'feed_urls'
+2025-01-15 08:57:36.634 | INFO     | __main__:cleanup_background_tasks:168 - Starting graceful shutdown...
+2025-01-15 08:57:36.635 | INFO     | __main__:cleanup_background_tasks:176 - Polling task cancelled successfully
+2025-01-15 08:57:36.637 | INFO     | __main__:cleanup_background_tasks:181 - Redis connections closed
+2025-01-15 08:57:36.637 | INFO     | __main__:cleanup_background_tasks:190 - Cleanup completed successfully

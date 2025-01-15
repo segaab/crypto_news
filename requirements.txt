@@ -1,0 +1,18 @@
+# Core dependencies
+aiohttp==3.9.1
+feedparser==6.0.10
+loguru==0.7.2
+redis==5.0.1
+
+# Production server
+gunicorn==21.2.0
+uvicorn==0.25.0
+
+# Content handling
+brotli==1.1.0  # For brotli compression
+beautifulsoup4==4.12.2  # For HTML parsing
+lxml==4.9.3  # For XML processing 
+
+# Add these lines to requirements.txt
+Brotli==1.1.0
+aiohttp[speedups] 
