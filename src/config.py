@@ -116,3 +116,11 @@ VLLM_TEMPERATURE = float(os.getenv('VLLM_TEMPERATURE', '0.5'))
 
 # Resource optimization settings
 MAX_CONCURRENT_FEEDS = int(os.getenv('MAX_CONCURRENT_FEEDS', '3'))  # Limit concurrent processing 
+
+# Add these lines
+OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
+USE_OPENAI = os.getenv('USE_OPENAI', 'true').lower() == 'true' 
+
+# Add Kaggle configuration
+KAGGLE_USERNAME = os.getenv('KAGGLE_USERNAME')
+KAGGLE_KEY = os.getenv('KAGGLE_KEY') 

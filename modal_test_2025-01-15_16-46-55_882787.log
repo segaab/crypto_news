@@ -1,0 +1,3 @@
+2025-01-15 16:46:55.890 | INFO     | setup_modal:setup_modal:13 - Modal is already installed
+2025-01-15 16:46:55.895 | INFO     | setup_modal:setup_modal:21 - Modal token not found. Starting authentication...
+2025-01-15 16:51:38.113 | WARNING  | __main__:<module>:75 - Test interrupted by user

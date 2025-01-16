@@ -1,0 +1,57 @@
+2025-01-15 12:02:04.307 | INFO     | article_analyzer:__init__:11 - ArticleAnalyzer initialized with vLLM endpoint: http://localhost:8000/v1/completions
+2025-01-15 12:02:04.313 | INFO     | __main__:test_analysis:35 - Starting analysis tests...
+2025-01-15 12:02:04.314 | INFO     | __main__:test_analysis:42 - 
+Testing analysis for article: test-1
+2025-01-15 12:02:04.314 | INFO     | __main__:test_analysis:43 - Title: Bitcoin Surges Past $50,000 as ETF Approval Looms
+2025-01-15 12:02:04.315 | INFO     | article_analyzer:analyze_article:36 - Starting analysis for article: test-1 - Bitcoin Surges Past $50,000 as ETF Approval Looms...
+2025-01-15 12:02:04.316 | DEBUG    | article_analyzer:_create_analysis_prompt:30 - Generated prompt for article test-1: Analyze this financial article briefly:
+
+Title: Bitcoin Surges Past $50,000 as ETF Approval Looms
+Source: cryptonews.com
+Content: Bitcoin's price surged above $50,000 for the first time since 2021, dr...
+2025-01-15 12:02:04.317 | DEBUG    | article_analyzer:analyze_article:48 - Sending request to vLLM for article test-1
+2025-01-15 12:02:04.331 | ERROR    | article_analyzer:analyze_article:87 - Error analyzing article test-1 after 0.02s
+Title: Bitcoin Surges Past $50,000 as ETF Approval Looms
+Error: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]
+Exception type: ClientConnectorError
+2025-01-15 12:02:04.332 | ERROR    | __main__:test_analysis:62 - ❌ Analysis failed for test-1
+2025-01-15 12:02:04.333 | INFO     | __main__:test_analysis:42 - 
+Testing analysis for article: test-2
+2025-01-15 12:02:04.334 | INFO     | __main__:test_analysis:43 - Title: Federal Reserve Holds Interest Rates Steady, Signals Future Cuts
+2025-01-15 12:02:04.335 | INFO     | article_analyzer:analyze_article:36 - Starting analysis for article: test-2 - Federal Reserve Holds Interest Rates Steady, Signa...
+2025-01-15 12:02:04.336 | DEBUG    | article_analyzer:_create_analysis_prompt:30 - Generated prompt for article test-2: Analyze this financial article briefly:
+
+Title: Federal Reserve Holds Interest Rates Steady, Signals Future Cuts
+Source: finance.news
+Content: The Federal Reserve maintained its benchmark interest rat...
+2025-01-15 12:02:04.337 | DEBUG    | article_analyzer:analyze_article:48 - Sending request to vLLM for article test-2
+2025-01-15 12:02:04.339 | ERROR    | article_analyzer:analyze_article:87 - Error analyzing article test-2 after 0.00s
+Title: Federal Reserve Holds Interest Rates Steady, Signals Future Cuts
+Error: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]
+Exception type: ClientConnectorError
+2025-01-15 12:02:04.339 | ERROR    | __main__:test_analysis:62 - ❌ Analysis failed for test-2
+2025-01-15 12:02:04.340 | INFO     | __main__:test_analysis:42 - 
+Testing analysis for article: test-3
+2025-01-15 12:02:04.341 | INFO     | __main__:test_analysis:43 - Title: Empty Article for Error Testing
+2025-01-15 12:02:04.341 | INFO     | article_analyzer:analyze_article:36 - Starting analysis for article: test-3 - Empty Article for Error Testing...
+2025-01-15 12:02:04.342 | DEBUG    | article_analyzer:_create_analysis_prompt:30 - Generated prompt for article test-3: Analyze this financial article briefly:
+
+Title: Empty Article for Error Testing
+Source: test.com
+Content: 
+
+Provide a concise analysis:
+1. Summary: Key points in 2-3 sentences
+2. Market Impact: Main e...
+2025-01-15 12:02:04.343 | DEBUG    | article_analyzer:analyze_article:48 - Sending request to vLLM for article test-3
+2025-01-15 12:02:04.345 | ERROR    | article_analyzer:analyze_article:87 - Error analyzing article test-3 after 0.00s
+Title: Empty Article for Error Testing
+Error: Cannot connect to host localhost:8000 ssl:default [Connect call failed ('127.0.0.1', 8000)]
+Exception type: ClientConnectorError
+2025-01-15 12:02:04.346 | ERROR    | __main__:test_analysis:62 - ❌ Analysis failed for test-3
+2025-01-15 12:02:04.347 | INFO     | __main__:test_analysis:78 - 
+=== Test Summary ===
+2025-01-15 12:02:04.348 | INFO     | __main__:test_analysis:79 - Total articles tested: 3
+2025-01-15 12:02:04.349 | INFO     | __main__:test_analysis:80 - Successful analyses: 0
+2025-01-15 12:02:04.349 | INFO     | __main__:test_analysis:81 - Failed analyses: 3
+2025-01-15 12:02:04.354 | INFO     | __main__:test_analysis:95 - Results saved to analysis_test_results.json

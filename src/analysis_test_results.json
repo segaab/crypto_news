@@ -1,0 +1,24 @@
+{
+  "timestamp": "2025-01-15T09:02:04.350455",
+  "total_tests": 3,
+  "successful": 0,
+  "failed": 3,
+  "results": [],
+  "errors": [
+    {
+      "article_id": "test-1",
+      "success": false,
+      "error": "Analysis returned None"
+    },
+    {
+      "article_id": "test-2",
+      "success": false,
+      "error": "Analysis returned None"
+    },
+    {
+      "article_id": "test-3",
+      "success": false,
+      "error": "Analysis returned None"
+    }
+  ]
+}

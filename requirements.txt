@@ -16,3 +16,6 @@ lxml==4.9.3  # For XML processing
 # Add these lines to requirements.txt
 Brotli==1.1.0
 aiohttp[speedups] 
+
+# Modal for serverless ML
+modal 

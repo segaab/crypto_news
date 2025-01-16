@@ -1,63 +1,34 @@
-import aiohttp
-import json
+import modal
 from loguru import logger
 from typing import Dict, Any, Optional
+import time
 
 class ArticleAnalyzer:
-    def __init__(self, vllm_host: str = "http://localhost:8000"):
-        self.vllm_host = vllm_host
-        self.endpoint = f"{vllm_host}/v1/completions"
-        
-    def _create_analysis_prompt(self, article: Dict[str, Any]) -> str:
-        """Create a structured prompt for the article analysis"""
-        return f"""Analyze this financial article briefly:
-
-Title: {article['title']}
-Source: {article['source']}
-Content: {article['content']}
-
-Provide a concise analysis:
-1. Summary: Key points in 2-3 sentences
-2. Market Impact: Main effects on markets
-3. Trading Ideas: 1-2 specific trading opportunities
-4. Assets: Key instruments mentioned
-5. Risk: Low/Medium/High with brief reason
-
-Keep responses short and focused."""
+    def __init__(self):
+        self.stub = modal.Stub.from_name("financial-news-analyzer")
+        self.model = self.stub.ModelService()
+        logger.info("ArticleAnalyzer initialized with Modal")
 
     async def analyze_article(self, article: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-        """Send article to vLLM for analysis"""
+        """Analyze article using Modal service"""
+        start_time = time.time()
+        logger.info(f"Starting analysis for article: {article['id']} - {article['title'][:50]}...")
+        
         try:
-            prompt = self._create_analysis_prompt(article)
+            result = self.model.analyze_article.remote(article)
             
-            payload = {
-                "model": "cxllin/Llama2-7b-Finance",
-                "prompt": prompt,
-                "max_tokens": 512,
-                "temperature": 0.5
-            }
-            
-            async with aiohttp.ClientSession() as session:
-                async with session.post(
-                    self.endpoint,
-                    headers={"Content-Type": "application/json"},
-                    json=payload
-                ) as response:
-                    if response.status == 200:
-                        result = await response.json()
-                        analysis = result['choices'][0]['text']
-                        
-                        return {
-                            "article_id": article["id"],
-                            "timestamp": article["timestamp"],
-                            "analysis": analysis,
-                            "model": "Llama2-7b-Finance",
-                            "version": "1.0"
-                        }
-                    else:
-                        logger.error(f"Analysis failed with status {response.status}: {await response.text()}")
-                        return None
-                        
+            if result:
+                elapsed_time = time.time() - start_time
+                logger.info(
+                    f"Analysis completed for article {article['id']} in {elapsed_time:.2f}s\n"
+                    f"Title: {article['title'][:50]}...\n"
+                    f"Analysis Preview: {result['analysis'][:200]}..."
+                )
+                return result
+            else:
+                logger.error("Analysis failed: No result returned")
+                return None
+                
         except Exception as e:
             logger.error(f"Error analyzing article: {str(e)}")
             return None 
